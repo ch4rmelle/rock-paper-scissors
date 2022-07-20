@@ -35,11 +35,12 @@ function getComputerChoice() {
 // Check for a tie
   const computerSelection = getComputerChoice();
   console.log(computerSelection);
-  let playerSelection = "rock";
+  let playerSelection = "paper";
 
   function playRound (playerSelection, computerSelection) {
-    let loseText = `You lost! ${computerSelection} beats ${playerSelection}`;
-    let winText = `You won! ${playerSelection} beats ${computerSelection}`;
+    let loseText = `You lost! ${computerSelection} beats ${capitalize(playerSelection)}`;
+    console.log(loseText);
+    let winText = `You won! ${capitalize(playerSelection)} beats ${computerSelection}`;
     let tieText = `You tied!`
     let result;
     if ( (playerSelection === 'rock' && computerSelection.toLowerCase() === 'paper') ||
@@ -54,3 +55,11 @@ function getComputerChoice() {
   }
 
   //write a capitalize function
+  function capitalize(text) {
+    text = text.toLowerCase();
+    let firstLetter = (text.substring(1,0)).toUpperCase();
+    let remainingText = text.substring(1);
+    return firstLetter + remainingText;
+
+
+  }
