@@ -18,5 +18,39 @@ function getComputerChoice() {
         compChoice = `Scissors`;
     }
     return compChoice;
-
 }
+
+
+
+// Check if computer wins
+ // ps == rock and cs == paper, cs win
+ // ps == scissors and cs == rock, cs win
+ // ps == paper and cs == scissors, cs win
+//return loserText
+ // Check if player wins
+  //ps == rock and cs == scissors, ps win
+  // ps == scissors and cs == paper, ps win
+  // ps == paper and cs == rock, ps win
+  //return winnerText
+// Check for a tie
+  const computerSelection = getComputerChoice();
+  console.log(computerSelection);
+  let playerSelection = "rock";
+
+  function playRound (playerSelection, computerSelection) {
+    let loseText = `You lost! ${computerSelection} beats ${playerSelection}`;
+    let winText = `You won! ${playerSelection} beats ${computerSelection}`;
+    let tieText = `You tied!`
+    let result;
+    if ( (playerSelection === 'rock' && computerSelection.toLowerCase() === 'paper') ||
+    (playerSelection === 'scissors' && computerSelection.toLowerCase() === 'rock') || (playerSelection === 'paper' && computerSelection.toLowerCase() === 'scissors')) {
+        return loseText;
+    } else if (playerSelection === 'rock' && computerSelection.toLowerCase() ==='scissors' ||
+    playerSelection === 'scissors' && computerSelection.toLowerCase() === 'paper' || playerSelection == 'paper' && computerSelection.toLowerCase() === 'rock') {
+        return winText;
+    } else if (playerSelection === computerSelection.toLowerCase()) {
+        return tieText;
+    }
+  }
+
+  //write a capitalize function
