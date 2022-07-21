@@ -6,7 +6,6 @@ function getComputerChoice() {
     let compChoice;
     let num;
     const randomNumber = Math.floor(Math.random()* 60) + 1;
-    console.log(randomNumber);
     if (randomNumber <= 20) {
         compChoice = `Rock`;
         console.log(compChoice);
