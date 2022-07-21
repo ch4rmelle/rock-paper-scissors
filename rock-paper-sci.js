@@ -8,7 +8,6 @@ function getComputerChoice() {
     const randomNumber = Math.floor(Math.random()* 60) + 1;
     if (randomNumber <= 20) {
         compChoice = `Rock`;
-        console.log(compChoice);
     } else if (randomNumber > 20 & randomNumber <= 40) {
         compChoice = `Paper`;
     } else if (randomNumber > 40 && randomNumber <= 60) {
