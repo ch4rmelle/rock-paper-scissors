@@ -1,9 +1,7 @@
-// function getComputerChoice 
-    // assign random number between 1-60
-    // if num <= 20 (choice = "rock")
-    // if (num > 20 && num <=40) (choice = 'paper')
-    //if (num > 40 && num <=60) (choice = 'scissors')
-    //return choice
+let playerScore = 0;
+let compScore = 0;
+let tieScore = 0;
+
 function getComputerChoice() {
     let compChoice;
     let num;
@@ -20,14 +18,10 @@ function getComputerChoice() {
     return compChoice;
 }
 
-let playerScore = 0;
-let compScore = 0;
-let tieScore = 0;
-
 function playRound (playerSelection, computerSelection) {
-let loseText = `You lost! ${computerSelection} beats ${capitalize(playerSelection)}`;
-let winText = `You won! ${capitalize(playerSelection)} beats ${computerSelection}`;
-let tieText = `You tied!`;
+    let loseText = `You lost! ${computerSelection} beats ${capitalize(playerSelection)}`;
+    let winText = `You won! ${capitalize(playerSelection)} beats ${computerSelection}`;
+    let tieText = `You tied!`;
     
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
@@ -54,6 +48,16 @@ let tieText = `You tied!`;
     }
     }
 
+function getWinner() {
+    if (compScore > playerScore) {
+        return console.log("The Computer won whole the game!")
+    } else if (playerScore > compScore) {
+        return console.log("You won whole the game!")
+    } else if (playerScore === compScore) {
+        return console.log("You tied the whole game!")
+    }
+}
+
 //write a capitalize function
 function capitalize(text) {
     text = text.toLowerCase();
@@ -68,6 +72,7 @@ function game() {
         let playerSelection = prompt(`Choose: Rock, Paper, or Scissors`,'');
         playRound(playerSelection, getComputerChoice());
 }
+    getWinner();
 }
 // Reset variables
 function resetGame() {
