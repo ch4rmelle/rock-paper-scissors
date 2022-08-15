@@ -34,7 +34,6 @@ restartBtn.addEventListener('click', resetGame)
 winnerDiv.style.display = "none";
 loserDiv.style.display = "none";
 
-//start the game
 function startGame() {
     imgs.forEach((img) => {
         img.addEventListener('click', playRound)});
@@ -43,8 +42,6 @@ function startGame() {
     startBtn.style.display = "none";
     
 }
-
-// play    
 function playRound(e) {
     playerSelection = e.target.id;
     computerSelection = getComputerSelection();
@@ -65,12 +62,10 @@ function playRound(e) {
                 img.removeEventListener('click', getGameRound)})
 }
 }
-
 function getComputerSelection() {
     let compChoice = ['rock', 'paper', 'scissors'];
     return compChoice[Math.floor(Math.random()*compChoice.length)];
 }
-
 function getWinner (playerSelection, computerSelection) {
     // Check if computer wins
     if (playerSelection === 'rock' && computerSelection === 'paper' ||
@@ -91,7 +86,6 @@ function getWinner (playerSelection, computerSelection) {
             return tieScore;
     }
     }
-
 function displayChoices(playerSelection, computerSelection) {
     computerSelection = capitalize(computerSelection);
     playerSelection = capitalize(playerSelection);
