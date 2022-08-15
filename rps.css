@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700&family=Play:wght@400;700&family=Poppins:wght@200;400;500&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 20px;
+    
+    font-family: Play, 'Open sans';
+    
+}
+/* Header & Buttons */
+
+.header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.header > p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: red;
+}
+
+.restart-btn, .start-btn{
+    font-family: Play;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    padding: 10px 10px;
+    font-size: 15px;
+    width: 100%
+}
+
+.start-btn {
+    background-color: green;
+
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.restart-btn:hover {
+    background-color: white;
+    color: black;
+    transition: background-color 0.5s ease;
+}
+
+.start-btn:hover {
+    background-color: black;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+
+
+/* Game UI */
+.game-title {
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.game-container, .game-top, .game-mid {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-container {
+    justify-content: center;
+    align-items: center;
+    
+    padding: 20px;
+    border: black solid 3px;
+    gap: 20px;
+}
+
+.game-top {
+    align-items: center;
+    border: black solid 2px;
+    gap: 10px;
+}
+
+.game-mid {
+    width: 700px;
+    font-size: 25px;
+
+    flex-direction: row;
+    justify-content: space-around;
+}
+.scores {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 700px;
+    font-size: 25px;
+}
+
+.scores, #round {
+    color: black;
+    padding: 5px 10px;
+}
+.winner-result, .lose-result {
+    padding: 25px;
+    color: white;
+    font-size: 25px;
+}
+
+.winner-result {
+    background-color: rgb(23, 121, 23);
+}
+
+.lose-result {
+    background-color: rgb(158, 46, 46);
+}
+
+.imgs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.end-result {
+    width: 700px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#rock, #paper, #scissors {
+    height: auto;
+    width: 200px;
+    border: black solid 2px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#rock:hover, #paper:hover, #scissors:hover {
+    height: auto;
+    opacity: 0.5;
+    width: 205px;
+    transition: opacity 0.5s ease;
+    transition: width 0.5s ease;
+}
+
+#round {
+    font-size: 25px;
+}
+
+/* Footer */
+.footer {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.icons-src {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+} 
