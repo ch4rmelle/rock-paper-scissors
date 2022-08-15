@@ -19,8 +19,8 @@ const roundTrackerPara = document.querySelector('#round');
 const winnerDiv = document.querySelector('.winner-result');
 const loserDiv = document.querySelector('.lose-result');
 
-const playerChoicePara = document.querySelector('.player-choice')
-const compChoicePara = document.querySelector('.computer-choice')
+const playerChoicePara = document.querySelector('.player-choice');
+const compChoicePara = document.querySelector('.computer-choice');
 
 
 
@@ -42,6 +42,7 @@ function startGame() {
     startBtn.style.display = "none";
     
 }
+
 function playRound(e) {
     playerSelection = e.target.id;
     computerSelection = getComputerSelection();
@@ -51,21 +52,23 @@ function playRound(e) {
     toggleResult();
     if (playerScore === 5) {
             imgs.forEach((img) => {
-                img.removeEventListener('click', playRound)})
+                img.removeEventListener('click', playRound)});
             imgs.forEach((img) => {
-                img.removeEventListener('click', getGameRound)})
+                img.removeEventListener('click', getGameRound)});
         
     } else if (compScore === 5) {
             imgs.forEach((img) => {
-                img.removeEventListener('click', playRound)})
+                img.removeEventListener('click', playRound)});
             imgs.forEach((img) => {
-                img.removeEventListener('click', getGameRound)})
+                img.removeEventListener('click', getGameRound)});
 }
 }
+
 function getComputerSelection() {
     let compChoice = ['rock', 'paper', 'scissors'];
     return compChoice[Math.floor(Math.random()*compChoice.length)];
 }
+
 function getWinner (playerSelection, computerSelection) {
     // Check if computer wins
     if (playerSelection === 'rock' && computerSelection === 'paper' ||
