@@ -40,6 +40,7 @@ function startGame() {
         img.addEventListener('click', playRound)});
     imgs.forEach((img) => {
         img.addEventListener('click', getGameRound)})
+    startBtn.style.display = "none";
     
 }
 
@@ -58,27 +59,23 @@ function playRound(e) {
                 img.removeEventListener('click', getGameRound)})
         
     } else if (compScore === 5) {
-        {
             imgs.forEach((img) => {
                 img.removeEventListener('click', playRound)})
             imgs.forEach((img) => {
                 img.removeEventListener('click', getGameRound)})
-    }
 }
 }
 
 function getComputerSelection() {
     let compChoice = ['rock', 'paper', 'scissors'];
     return compChoice[Math.floor(Math.random()*compChoice.length)];
-   
 }
 
 function getWinner (playerSelection, computerSelection) {
-    
     // Check if computer wins
     if (playerSelection === 'rock' && computerSelection === 'paper' ||
-            playerSelection === 'scissors' && computerSelection === 'rock' || 
-            playerSelection === 'paper' && computerSelection === 'scissors') {
+        playerSelection === 'scissors' && computerSelection === 'rock' || 
+        playerSelection === 'paper' && computerSelection === 'scissors') {
             compScore +=1;
             return compScore;
             
@@ -103,7 +100,6 @@ function displayChoices(playerSelection, computerSelection) {
 }
     
 function updateScore() {
-
     playerScorePara.textContent = `Player: ${playerScore}`;
     computerScorePara.textContent =`Computer: ${compScore}`;
     tieScorePara.textContent = `Tie: ${tieScore}`;
@@ -119,12 +115,25 @@ function toggleResult() {
         loserDiv.style.display = loserDiv.style.display === "none" ? "block" : "none";
     }
 }
+
+// capitalizes first letter
 function capitalize(text) {
     text = text.toLowerCase();
     let firstLetter = (text.substring(1,0)).toUpperCase();
     let remainingText = text.substring(1);
     return firstLetter + remainingText;
 }
+
+function getGameRound() {
+    roundCounter++;
+    roundTrackerPara.textContent = `Round: ${roundCounter}`;
+}
+
+function playSound(soundobj) {
+    let sound=document.getElementById(soundobj);
+    sound.play();
+}
+
 // Resets whole game and play again
 function resetGame() {
     resetGlobalVariables();
@@ -145,12 +154,3 @@ function resetGlobalVariables() {
     roundCounter = 0;
 }
 
-function getGameRound() {
-    roundCounter++;
-    roundTrackerPara.textContent = `Round: ${roundCounter}`;
-}
-
-function playSound(soundobj) {
-    let sound=document.getElementById(soundobj);
-    sound.play();
-}
