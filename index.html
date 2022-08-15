@@ -1,12 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rps.css">
     <title>Rock Paper Scissors Game</title>
 </head>
+
 <body>
+    <div class="header">
+        <h2 class="game-title">Rock, Paper, Scissors</h2>
+        <h3 class="game-description"> First player to reach 5 points, wins.</h3>
+        <p>Check your volume before playing!</p>
+    </div>
+    <div class="buttons">
+        <div class="start-game">
+            <button onclick="playSound('btnSound')" class="start-btn">Start</button>
+            <audio src="./soundbytes/start-sound.mp3" id="btnSound"></audio>
+        </div>
+        <div class="restart-game">
+            <button onclick="playSound('btnSound')" class="restart-btn">Restart</button>
+        </div>
+    </div>
+    <div class="game-container">
+        <div class="game-top">
+            <div id="round">Round: </div>
+            <div class="scores">
+                <div id="player-score">Player: </div>
+                <div id="computer-score">Computer: </div>
+                <div id="tie-score">Tie: </div>
+            </div>
+        </div>
+        <div class="game-mid">
+            <div class="player-choice">Player: </div>
+            <div class="computer-choice">Computer:</div>
+        </div>
+
+        <div class="end-result">
+            <p class="winner-result">Victory! You won the game!</p>
+            <p class="lose-result">Defeat! You lost the game!</p>
+        </div>
+        <div class="imgs-container">
+            <img onclick="playSound('rockSound')" src="/images/rock.png" id="rock" />
+            <img onclick="playSound('paperSound')" src="/images/paper.png" id="paper" />
+            <img onclick="playSound('scissorsSound')" src="/images/scissors.png" id="scissors"/>
+            <audio src="./soundbytes/rock.mp3" id="rockSound"></audio>
+            <audio src="./soundbytes/paper.mp3" id="paperSound"></audio>
+            <audio src="./soundbytes/scissors.mp3" id="scissorsSound"></audio>
+        </div>
+       
+    </div>
+    
+    <div class="footer">
+            <div>Charm © 2022 | <a href="/img-sources.html">Icon Sources</a>
+            <div>Sound from Zapsplat</div>
+    </div>
+    
     <script src="./rock-paper-sci.js"></script>
+
 </body>
+
 </html>

@@ -1,81 +1,156 @@
 let playerScore = 0;
 let compScore = 0;
 let tieScore = 0;
+let roundCounter = 0;
+let computerSelection= '';
+let playerSelection = '';
 
-function getComputerChoice() {
-    let compChoice;
-    let num;
-    const randomNumber = Math.floor(Math.random()* 60) + 1;
-    if (randomNumber <= 20) {
-        compChoice = `Rock`;
-    } else if (randomNumber > 20 & randomNumber <= 40) {
-        compChoice = `Paper`;
-    } else if (randomNumber > 40 && randomNumber <= 60) {
-        compChoice = `Scissors`;
-    }
-    return compChoice;
+
+// Game UI
+const imgs = document.querySelectorAll('img');
+const startBtn = document.querySelector('.start-btn')
+const resultPara = document.querySelector('.scores');
+const restartBtn = document.querySelector(".restart-btn");
+const playerScorePara = document.querySelector("#player-score");
+const computerScorePara = document.querySelector("#computer-score");
+const tieScorePara = document.querySelector("#tie-score");
+const roundTrackerPara = document.querySelector('#round');
+
+const winnerDiv = document.querySelector('.winner-result');
+const loserDiv = document.querySelector('.lose-result');
+
+const playerChoicePara = document.querySelector('.player-choice')
+const compChoicePara = document.querySelector('.computer-choice')
+
+
+
+
+// event listeners 
+startBtn.addEventListener('click',startGame);
+startBtn.addEventListener('click',updateScore);
+restartBtn.addEventListener('click', resetGame)
+
+
+winnerDiv.style.display = "none";
+loserDiv.style.display = "none";
+
+//start the game
+function startGame() {
+    imgs.forEach((img) => {
+        img.addEventListener('click', playRound)});
+    imgs.forEach((img) => {
+        img.addEventListener('click', getGameRound)})
+    
 }
 
-function playRound (playerSelection, computerSelection) {
-    let loseText = `You lost! ${computerSelection} beats ${capitalize(playerSelection)}`;
-    let winText = `You won! ${capitalize(playerSelection)} beats ${computerSelection}`;
-    let tieText = `You tied!`;
+// play    
+function playRound(e) {
+    playerSelection = e.target.id;
+    computerSelection = getComputerSelection();
+    getWinner(playerSelection, computerSelection);
+    updateScore();
+    displayChoices(playerSelection, computerSelection); 
+    toggleResult();
+    if (playerScore === 5) {
+            imgs.forEach((img) => {
+                img.removeEventListener('click', playRound)})
+            imgs.forEach((img) => {
+                img.removeEventListener('click', getGameRound)})
+        
+    } else if (compScore === 5) {
+        {
+            imgs.forEach((img) => {
+                img.removeEventListener('click', playRound)})
+            imgs.forEach((img) => {
+                img.removeEventListener('click', getGameRound)})
+    }
+}
+}
+
+function getComputerSelection() {
+    let compChoice = ['rock', 'paper', 'scissors'];
+    return compChoice[Math.floor(Math.random()*compChoice.length)];
+   
+}
+
+function getWinner (playerSelection, computerSelection) {
     
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
     // Check if computer wins
-    if ( (playerSelection === 'rock' && computerSelection === 'paper') ||
-    (playerSelection === 'scissors' && computerSelection === 'rock') || (playerSelection === 'paper' && computerSelection.toLowerCase() === 'scissors')) {
-        console.log(loseText);
-        compScore +=1;
-        console.log(`Player: ${playerScore} Computer: ${compScore} Tie: ${tieScore}`);
-        return compScore;
+    if (playerSelection === 'rock' && computerSelection === 'paper' ||
+            playerSelection === 'scissors' && computerSelection === 'rock' || 
+            playerSelection === 'paper' && computerSelection === 'scissors') {
+            compScore +=1;
+            return compScore;
+            
     // Check if Player Wins
-    } else if (playerSelection === 'rock' && computerSelection.toLowerCase() ==='scissors' ||
-    playerSelection === 'scissors' && computerSelection === 'paper' || playerSelection == 'paper' && computerSelection === 'rock') {
-        console.log(winText);
-        playerScore += 1;
-        console.log(`Player: ${playerScore} Computer: ${compScore} Tie: ${tieScore}`);
-        return playerScore;
+    } else if (playerSelection === 'rock' && computerSelection ==='scissors' ||
+            playerSelection === 'scissors' && computerSelection === 'paper' || 
+            playerSelection == 'paper' && computerSelection === 'rock') {
+            playerScore += 1;
+            return playerScore;
     // Check if there's a tie
     } else if (playerSelection === computerSelection) {
-        console.log(tieText);
-        tieScore += 1;
-        console.log(`Player: ${playerScore} Computer: ${compScore} Tie: ${tieScore}`);
-        return tieScore;
+            tieScore += 1;
+            return tieScore;
     }
     }
 
-function getWinner() {
-    if (compScore > playerScore) {
-        return console.log("The Computer won whole the game!")
-    } else if (playerScore > compScore) {
-        return console.log("You won whole the game!")
-    } else if (playerScore === compScore) {
-        return console.log("You tied the whole game!")
-    }
+function displayChoices(playerSelection, computerSelection) {
+    computerSelection = capitalize(computerSelection);
+    playerSelection = capitalize(playerSelection);
+    compChoicePara.textContent = `Computer: ${computerSelection}`;
+    playerChoicePara.textContent = `Player: ${playerSelection}`;
+}
+    
+function updateScore() {
+
+    playerScorePara.textContent = `Player: ${playerScore}`;
+    computerScorePara.textContent =`Computer: ${compScore}`;
+    tieScorePara.textContent = `Tie: ${tieScore}`;
+    roundTrackerPara.textContent = `Round: ${roundCounter}`;
+    compChoicePara.textContent = `Computer: ${computerSelection}`;
+    playerChoicePara.textContent = `Player: ${playerSelection}`;
 }
 
-//write a capitalize function
+function toggleResult() {
+    if (playerScore === 5) {
+        winnerDiv.style.display = winnerDiv.style.display === "none" ? "block": "none";
+    } else if (compScore === 5){
+        loserDiv.style.display = loserDiv.style.display === "none" ? "block" : "none";
+    }
+}
 function capitalize(text) {
     text = text.toLowerCase();
     let firstLetter = (text.substring(1,0)).toUpperCase();
     let remainingText = text.substring(1);
     return firstLetter + remainingText;
 }
-
-function game() {
-    resetGame();
-    for (let x = 0; x < 5; x++){
-        let playerSelection = prompt(`Choose: Rock, Paper, or Scissors`,'');
-        playRound(playerSelection, getComputerChoice());
-}
-    getWinner();
-}
-// Reset variables
+// Resets whole game and play again
 function resetGame() {
+    resetGlobalVariables();
+    updateScore();
+    toggleResult(); // resets the Results
+    startGame();
+    winnerDiv.style.display = "none";
+    loserDiv.style.display = "none";
+
+}
+
+function resetGlobalVariables() {
+    playerSelection = '';
+    computerSelection = '';
     compScore = 0;
     playerScore = 0;
     tieScore = 0;
+    roundCounter = 0;
 }
 
+function getGameRound() {
+    roundCounter++;
+    roundTrackerPara.textContent = `Round: ${roundCounter}`;
+}
+
+function playSound(soundobj) {
+    let sound=document.getElementById(soundobj);
+    sound.play();
+}
