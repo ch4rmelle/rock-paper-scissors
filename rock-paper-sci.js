@@ -39,7 +39,7 @@ function startGame() {
     imgs.forEach((img) => {
         img.addEventListener('click', playRound)});
     imgs.forEach((img) => {
-        img.addEventListener('click', getGameRound)})
+        img.addEventListener('click', getGameRound)});
     startBtn.style.display = "none";
     
 }
