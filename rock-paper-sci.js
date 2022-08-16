@@ -32,13 +32,12 @@ startBtn.addEventListener('click',startGame);
 startBtn.addEventListener('click',updateScore);
 restartBtn.addEventListener('click', resetGame);
 
+// starting display
 winnerDiv.style.display = "none";
 loserDiv.style.display = "none";
 roundWinner.style.display = "none";
 gameDiv.style.visibility = "hidden";
 restartBtn.style.display = "none"
-// restartBtn.style.display = "none"; make a toggle restartBtn func
-
 
 function startGame() {
     gameDiv.style.visibility = "visible";
