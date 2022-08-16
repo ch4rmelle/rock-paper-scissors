@@ -4,12 +4,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center; 
     gap: 20px;
-    
+    background-size: cover;
+    background-repeat: no-repeat;
     font-family: Play, 'Open sans';
     
 }
@@ -26,6 +28,11 @@ body {
 .header > p {
     font-size: 15px;
     color: red;
+}
+
+.game-title {
+    margin-top: 20px;
+    font-size: 40px;
 }
 
 .restart-btn, .start-btn{
@@ -50,28 +57,23 @@ body {
     gap: 15px;
 }
 
-.restart-btn:hover {
+.restart-btn:hover, .start-btn:hover {
     background-color: white;
     color: black;
     transition: background-color 0.5s ease;
 } 
 
-.start-btn:hover {
-    background-color: black;
-    color: white;
-    transition: background-color 0.5s ease;
-}
+
 
 /* Game UI */
-.game-title {
-    margin-top: 20px;
-    font-size: 40px;
-}
+
 
 .game-container, .game-top, .game-mid {
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
+    border-radius: 8px;
+
+    opacity: 0.9;
 }
 
 .game-container {
@@ -80,6 +82,8 @@ body {
     padding: 20px;
     border: black solid 3px;
     gap: 20px;
+
+    background-color: white;
 }
 
 .game-top {
@@ -122,6 +126,16 @@ body {
     background-color: rgb(158, 46, 46);
 }
 
+.round-winner {
+    width: 700px;
+
+    background-color: rgb(243, 162, 10);
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    padding: 5px 10px;
+}
+
 .imgs-container {
     display: flex;
     justify-content: center;
@@ -148,6 +162,7 @@ body {
     height: auto;
     opacity: 0.5;
     width: 205px;
+    border:rgb(23, 121, 23) solid 3px;
     transition: opacity 0.5s ease;
     transition: width 0.5s ease;
 }

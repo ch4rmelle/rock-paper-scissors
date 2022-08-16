@@ -16,8 +16,14 @@ const computerScorePara = document.querySelector("#computer-score");
 const tieScorePara = document.querySelector("#tie-score");
 const roundTrackerPara = document.querySelector('#round');
 
+
 const winnerDiv = document.querySelector('.winner-result');
 const loserDiv = document.querySelector('.lose-result');
+const roundWinner = document.querySelector('.round-winner');
+
+// audio
+const loserSound = document.querySelector('#loser-sound');
+const winnerSound = document.querySelector('#winner-sound');
 
 const playerChoicePara = document.querySelector('.player-choice');
 const compChoicePara = document.querySelector('.computer-choice');
@@ -30,9 +36,9 @@ startBtn.addEventListener('click',startGame);
 startBtn.addEventListener('click',updateScore);
 restartBtn.addEventListener('click', resetGame)
 
-
 winnerDiv.style.display = "none";
 loserDiv.style.display = "none";
+roundWinner.style.display = "none";
 
 function startGame() {
     imgs.forEach((img) => {
@@ -48,20 +54,27 @@ function playRound(e) {
     computerSelection = getComputerSelection();
     getWinner(playerSelection, computerSelection);
     updateScore();
-    displayChoices(playerSelection, computerSelection); 
-    toggleResult();
-    if (playerScore === 5) {
-            imgs.forEach((img) => {
-                img.removeEventListener('click', playRound)});
-            imgs.forEach((img) => {
-                img.removeEventListener('click', getGameRound)});
-        
-    } else if (compScore === 5) {
-            imgs.forEach((img) => {
-                img.removeEventListener('click', playRound)});
-            imgs.forEach((img) => {
-                img.removeEventListener('click', getGameRound)});
+    displayChoices(playerSelection, computerSelection);
+    displayRoundResult(playerSelection, computerSelection);
+    displayGameWinner();
+    removeEventListener();
+    
 }
+
+function removeEventListener() {
+    if (playerScore === 5) {
+        imgs.forEach((img) => {
+            img.removeEventListener('click', playRound)});
+        imgs.forEach((img) => {
+            img.removeEventListener('click', getGameRound)});
+    
+} else if (compScore === 5) {
+        imgs.forEach((img) => {
+            img.removeEventListener('click', playRound)});
+        imgs.forEach((img) => {
+            img.removeEventListener('click', getGameRound)});
+
+    }
 }
 
 function getComputerSelection() {
@@ -105,15 +118,36 @@ function updateScore() {
     playerChoicePara.textContent = `Player: ${playerSelection}`;
 }
 
-function toggleResult() {
+function displayRoundResult(playerSelection, computerSelection) {
+    roundWinner.style.display = "block";
+    if (playerSelection === computerSelection) {
+        roundWinner.textContent = `It's a tie!`;
+    } 
+    else if (playerSelection === 'rock' && computerSelection === 'paper' ||
+        playerSelection === 'scissors' && computerSelection === 'rock' || 
+        playerSelection === 'paper' && computerSelection === 'scissors') {
+        roundWinner.textContent = `You lose! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`;
+        } 
+    else if (playerSelection === 'rock' && computerSelection ==='scissors' ||
+        playerSelection === 'scissors' && computerSelection === 'paper' || 
+        playerSelection == 'paper' && computerSelection === 'rock') {
+        roundWinner.textContent = `You won! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`;
+        }
+}
+
+function displayGameWinner() {
     if (playerScore === 5) {
         winnerDiv.style.display = winnerDiv.style.display === "none" ? "block": "none";
+        playResultSound();
+        roundWinner.style.display = "none";
     } else if (compScore === 5){
         loserDiv.style.display = loserDiv.style.display === "none" ? "block" : "none";
+        playResultSound();
+        roundWinner.style.display = "none";
     }
 }
 
-// capitalizes first letter
+// capitalize first letter
 function capitalize(text) {
     text = text.toLowerCase();
     let firstLetter = (text.substring(1,0)).toUpperCase();
@@ -126,19 +160,29 @@ function getGameRound() {
     roundTrackerPara.textContent = `Round: ${roundCounter}`;
 }
 
+// Play sounds
 function playSound(soundobj) {
     let sound=document.getElementById(soundobj);
     sound.play();
+}
+
+function playResultSound() {
+    if (playerScore === 5){
+        winnerSound.play();
+    }else if (compScore === 5) {
+        loserSound.play();
+    }
 }
 
 // Resets whole game and play again
 function resetGame() {
     resetGlobalVariables();
     updateScore();
-    toggleResult(); // resets the Results
-    startGame();
+    displayRoundResult();
+    roundWinner.style.display = "none";
     winnerDiv.style.display = "none";
     loserDiv.style.display = "none";
+    startGame();
 
 }
 

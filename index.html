@@ -19,11 +19,12 @@
 
     <div class="buttons">
         <div class="start-game">
-            <button onclick="playSound('btnSound')" class="start-btn">Start</button>
-            <audio src="./soundbytes/start-sound.mp3" id="btnSound"></audio>
+            <button onclick="playSound('startSound')" class="start-btn">Start</button>
+            <audio src="./soundbytes/start-sound.mp3" id="startSound"></audio>
         </div>
         <div class="restart-game">
-            <button onclick="playSound('btnSound')" class="restart-btn">Restart</button>
+            <button onclick="playSound('restartSound')" class="restart-btn">Restart</button>
+            <audio src="./soundbytes/restart-sound.mp3" id="restartSound"></audio>
         </div>
     </div>
 
@@ -40,9 +41,13 @@
             <div class="player-choice">Player: </div>
             <div class="computer-choice">Computer:</div>
         </div>
+        <div class="round-winner">
+        </div>
         <div class="end-result">
             <p class="winner-result">Victory! You won the game!</p>
+            <audio src="./soundbytes/winner-sound.mp3" id="winner-sound"></audio>
             <p class="lose-result">Defeat! You lost the game!</p>
+            <audio src="./soundbytes/loser-sound.mp3" id="loser-sound"></audio>
         </div>
         <div class="imgs-container">
             <img onclick="playSound('rockSound')" src="./images/rock.png" id="rock" />
