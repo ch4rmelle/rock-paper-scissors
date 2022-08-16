@@ -10,16 +10,13 @@ body {
     flex-direction: column;
     align-items: center; 
     gap: 20px;
-    background-size: cover;
-    background-repeat: no-repeat;
     font-family: Play, 'Open sans';
     
 }
 /* Header & Buttons */
-
 .header {
     text-align: center;
-
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -31,12 +28,11 @@ body {
 }
 
 .game-title {
-    margin-top: 20px;
     font-size: 40px;
 }
 
 .restart-btn, .start-btn{
-    font-family: Play;
+    font-family: inherit;
     background-color: black;
     color: white;
     font-size: 15px;
@@ -49,7 +45,6 @@ body {
 
 .start-btn {
     background-color: green;
-
 }
 
 .buttons {
@@ -63,15 +58,18 @@ body {
     transition: background-color 0.5s ease;
 } 
 
-
-
 /* Game UI */
 .game-container{
     display: flex;
     flex-direction: column;
     border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
 
-    opacity: 0.9;
+    background-color: white;
+    border: black solid 3px;
 }
 
 .sec-container {
@@ -84,25 +82,11 @@ body {
 .game-top {
     display: flex;
     flex-direction: column;
-}
-
-.game-container {
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border: black solid 3px;
-    gap: 20px;
-
-    background-color: white;
-}
-
-.game-top {
     align-items: center;
     border: black solid 2px;
     gap: 10px;
     padding: 5px;
-    flex-grow: 1;
-    
+    font-size: 25px;
 }
 
 .game-mid {
@@ -116,16 +100,14 @@ body {
 .scores {
     display: flex;
     justify-content: space-between;
-    font-size: 25px;
     width: 100%;
-    
 }
 
 .scores, #round {
     color: black;
     padding: 5px 10px;
-    
 }
+
 .winner-result, .lose-result {
     padding: 25px;
     color: white;
@@ -141,7 +123,6 @@ body {
 }
 
 .round-winner {
-
     background-color: rgb(243, 162, 10);
     color: white;
     text-align: center;
@@ -179,10 +160,6 @@ body {
     transition: width 0.5s ease;
 }
 
-#round {
-    font-size: 25px;
-}
-
 /* Footer */
 .footer {
     padding-bottom: 10px;
@@ -202,3 +179,21 @@ a {
     text-decoration: none;
     color: gray;
 } 
+
+@media screen and (max-device-width: 480px) {
+    #rock, #paper, #scissors {
+        width: 120px;
+    }
+
+    .scores {
+        flex-direction: row;
+        
+    }
+    @media (hover: none) {
+        #rock:hover, #paper:hover, #scissors:hover { 
+            opacity: inherit;
+            width: 120px;
+            border: black solid 2px; }
+      }
+    
+}

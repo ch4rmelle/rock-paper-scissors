@@ -5,7 +5,6 @@ let roundCounter = 0;
 let computerSelection= '';
 let playerSelection = '';
 
-
 // Game UI
 const imgs = document.querySelectorAll('img');
 const startBtn = document.querySelector('.start-btn')
@@ -15,7 +14,6 @@ const playerScorePara = document.querySelector("#player-score");
 const computerScorePara = document.querySelector("#computer-score");
 const tieScorePara = document.querySelector("#tie-score");
 const roundTrackerPara = document.querySelector('#round');
-
 
 const winnerDiv = document.querySelector('.winner-result');
 const loserDiv = document.querySelector('.lose-result');
@@ -31,17 +29,17 @@ const compChoicePara = document.querySelector('.computer-choice');
 // event listeners 
 startBtn.addEventListener('click',startGame);
 startBtn.addEventListener('click',updateScore);
-restartBtn.addEventListener('click', resetGame)
+restartBtn.addEventListener('click', resetGame);
 
 winnerDiv.style.display = "none";
 loserDiv.style.display = "none";
 roundWinner.style.display = "none";
+// restartBtn.style.display = "none"; make a toggle restartBtn func
+
 
 function startGame() {
     imgs.forEach((img) => {
         img.addEventListener('click', playRound)});
-    imgs.forEach((img) => {
-        img.addEventListener('click', getGameRound)});
     startBtn.style.display = "none";
 }
 
@@ -49,6 +47,7 @@ function playRound(e) {
     playerSelection = e.target.id;
     computerSelection = getComputerSelection();
     getWinner(playerSelection, computerSelection);
+    getGameRound();
     updateScore();
     displayChoices(playerSelection, computerSelection);
     displayRoundResult(playerSelection, computerSelection);
@@ -60,14 +59,10 @@ function removeEventListener() {
     if (playerScore === 5) {
         imgs.forEach((img) => {
             img.removeEventListener('click', playRound)});
-        imgs.forEach((img) => {
-            img.removeEventListener('click', getGameRound)});
     
 } else if (compScore === 5) {
         imgs.forEach((img) => {
             img.removeEventListener('click', playRound)});
-        imgs.forEach((img) => {
-            img.removeEventListener('click', getGameRound)});
 
     }
 }
@@ -132,11 +127,11 @@ function displayRoundResult(playerSelection, computerSelection) {
 
 function displayGameWinner() {
     if (playerScore === 5) {
-        winnerDiv.style.display = winnerDiv.style.display === "none" ? "block": "none";
+        winnerDiv.style.display = 'block';
         playResultSound();
         roundWinner.style.display = "none";
     } else if (compScore === 5){
-        loserDiv.style.display = loserDiv.style.display === "none" ? "block" : "none";
+        loserDiv.style.display = 'block';
         playResultSound();
         roundWinner.style.display = "none";
     }
@@ -144,7 +139,6 @@ function displayGameWinner() {
 
 // capitalize first letter
 function capitalize(text) {
-    text = text.toLowerCase();
     let firstLetter = (text.substring(1,0)).toUpperCase();
     let remainingText = text.substring(1);
     return firstLetter + remainingText;
@@ -173,12 +167,10 @@ function playResultSound() {
 function resetGame() {
     resetGlobalVariables();
     updateScore();
-    displayRoundResult();
     roundWinner.style.display = "none";
     winnerDiv.style.display = "none";
     loserDiv.style.display = "none";
     startGame();
-
 }
 
 function resetGlobalVariables() {
