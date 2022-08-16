@@ -28,9 +28,6 @@ const winnerSound = document.querySelector('#winner-sound');
 const playerChoicePara = document.querySelector('.player-choice');
 const compChoicePara = document.querySelector('.computer-choice');
 
-
-
-
 // event listeners 
 startBtn.addEventListener('click',startGame);
 startBtn.addEventListener('click',updateScore);
@@ -46,7 +43,6 @@ function startGame() {
     imgs.forEach((img) => {
         img.addEventListener('click', getGameRound)});
     startBtn.style.display = "none";
-    
 }
 
 function playRound(e) {
@@ -57,8 +53,7 @@ function playRound(e) {
     displayChoices(playerSelection, computerSelection);
     displayRoundResult(playerSelection, computerSelection);
     displayGameWinner();
-    removeEventListener();
-    
+    removeEventListener();  
 }
 
 function removeEventListener() {
@@ -101,7 +96,7 @@ function getWinner (playerSelection, computerSelection) {
             tieScore += 1;
             return tieScore;
     }
-    }
+}
 function displayChoices(playerSelection, computerSelection) {
     computerSelection = capitalize(computerSelection);
     playerSelection = capitalize(playerSelection);
