@@ -72,6 +72,7 @@ body {
 
     background-color: #e3e3e3;
     border: black solid 3px;
+    line-height: 1.2;
 }
 
 .sec-container {
@@ -200,6 +201,12 @@ a {
 } 
 /* Media Queries */
 @media screen and (max-device-width: 480px) {
+   .game-title {
+    font-size: 24px;
+   }
+   .game-description {
+    font-size: 16px;
+   }
     #rock, #paper, #scissors {
         width: 120px;
     }
