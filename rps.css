@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;700&family=Play:wght@400;700&family=Poppins:wght@200;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +12,7 @@ body {
     flex-direction: column;
     align-items: center; 
     gap: 20px;
-    font-family: Play, 'Open sans';
+    font-family: 'Press Start 2P', sans-serif;
     
 }
 /* Header & Buttons */
@@ -19,23 +21,23 @@ body {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 .header > p {
-    font-size: 15px;
+    font-size: 16px;
     color: red;
 }
 
 .game-title {
-    font-size: 40px;
+    font-size: 32px;
 }
 
 .restart-btn, .start-btn{
     font-family: inherit;
     background-color: black;
     color: white;
-    font-size: 15px;
+    font-size: 16px;
     border: 2px solid black;
     border-radius: 8px;
 
@@ -68,7 +70,7 @@ body {
     padding: 20px;
     gap: 20px;
 
-    background-color: white;
+    background-color: #e3e3e3;
     border: black solid 3px;
 }
 
@@ -84,17 +86,20 @@ body {
     flex-direction: column;
     align-items: center;
     border: black solid 2px;
+    border-radius: 8px;
     gap: 10px;
     padding: 5px;
-    font-size: 25px;
+
+    background-color: #96b170;
+    font-size: 16px;
 }
 
 .game-mid {
-    font-size: 25px;
+    font-size: 16px;
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    
+
 }
 
 .scores {
@@ -109,25 +114,25 @@ body {
 }
 
 .winner-result, .lose-result {
-    padding: 25px;
+    padding: 16;
     color: white;
-    font-size: 25px;
+    font-size: 16;
 }
 
 .winner-result {
-    background-color: rgb(23, 121, 23);
+    background-color: #88ae53;
 }
 
 .lose-result {
-    background-color: rgb(158, 46, 46);
+    background-color: rgb(165, 89, 89);
 }
 
 .round-winner {
     background-color: rgb(243, 162, 10);
     color: white;
     text-align: center;
-    font-size: 25px;
-    padding: 5px 10px;
+    font-size: 16;
+    padding: 10px 0;
 }
 
 .imgs-container {
@@ -139,8 +144,11 @@ body {
 }
 
 .end-result {
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
+}
+.end-result > * {
+    padding: 15px 0;
 }
 
 #rock, #paper, #scissors {
@@ -160,10 +168,22 @@ body {
     transition: width 0.5s ease;
 }
 
+#rock {
+    background-color: #e1ae21 ;
+}
+
+#paper {
+    background-color: #4a3d7a;
+}
+
+#scissors {
+    background-color:#9f2c5b ;
+}
 /* Footer */
 .footer {
     padding-bottom: 10px;
     text-align: center;
+    font-size: 8px;
 }
 
 ul {

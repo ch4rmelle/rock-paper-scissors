@@ -14,6 +14,7 @@ const playerScorePara = document.querySelector("#player-score");
 const computerScorePara = document.querySelector("#computer-score");
 const tieScorePara = document.querySelector("#tie-score");
 const roundTrackerPara = document.querySelector('#round');
+const gameDiv = document.querySelector('.game-container');
 
 const winnerDiv = document.querySelector('.winner-result');
 const loserDiv = document.querySelector('.lose-result');
@@ -34,10 +35,13 @@ restartBtn.addEventListener('click', resetGame);
 winnerDiv.style.display = "none";
 loserDiv.style.display = "none";
 roundWinner.style.display = "none";
+gameDiv.style.visibility = "hidden";
+restartBtn.style.display = "none"
 // restartBtn.style.display = "none"; make a toggle restartBtn func
 
 
 function startGame() {
+    gameDiv.style.visibility = "visible";
     imgs.forEach((img) => {
         img.addEventListener('click', playRound)});
     startBtn.style.display = "none";
@@ -52,6 +56,7 @@ function playRound(e) {
     displayChoices(playerSelection, computerSelection);
     displayRoundResult(playerSelection, computerSelection);
     displayGameWinner();
+    displayRestartBtn();
     removeEventListener();  
 }
 
@@ -134,6 +139,12 @@ function displayGameWinner() {
         loserDiv.style.display = 'block';
         playResultSound();
         roundWinner.style.display = "none";
+    }
+}
+
+function displayRestartBtn() {
+    if (compScore === 5 | playerScore === 5) {
+        restartBtn.style.display = "block";
     }
 }
 
