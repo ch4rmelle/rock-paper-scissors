@@ -66,14 +66,23 @@ body {
 
 
 /* Game UI */
-
-
-.game-container, .game-top, .game-mid {
+.game-container{
     display: flex;
     flex-direction: column;
     border-radius: 8px;
 
     opacity: 0.9;
+}
+
+.sec-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-top {
+    display: flex;
+    flex-direction: column;
 }
 
 .game-container {
@@ -91,21 +100,20 @@ body {
     border: black solid 2px;
     gap: 10px;
     padding: 5px;
+    flex-grow: 1;
 }
 
 .game-mid {
-    width: 700px;
     font-size: 25px;
-
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .scores {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    width: 700px;
     font-size: 25px;
+    gap: 100px;
+    
 }
 
 .scores, #round {
@@ -127,7 +135,6 @@ body {
 }
 
 .round-winner {
-    width: 700px;
 
     background-color: rgb(243, 162, 10);
     color: white;
@@ -145,7 +152,6 @@ body {
 }
 
 .end-result {
-    width: 700px;
     font-size: 20px;
     text-align: center;
 }
