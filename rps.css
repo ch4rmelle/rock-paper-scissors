@@ -113,9 +113,9 @@ body {
 }
 
 .winner-result, .lose-result {
-    padding: 16;
+    padding: 16px;
     color: white;
-    font-size: 16;
+    font-size: 16px;
 }
 
 .winner-result {
@@ -130,8 +130,8 @@ body {
     background-color: rgb(243, 162, 10);
     color: white;
     text-align: center;
-    font-size: 16;
-    padding: 10px 0;
+    font-size: 16px;
+    padding: 10px 5px;
 }
 
 .imgs-container {
