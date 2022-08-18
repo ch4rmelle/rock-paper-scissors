@@ -15,6 +15,8 @@ const computerScorePara = document.querySelector("#computer-score");
 const tieScorePara = document.querySelector("#tie-score");
 const roundTrackerPara = document.querySelector('#round');
 const gameDiv = document.querySelector('.game-container');
+const playerChoicePara = document.querySelector('.player-choice');
+const compChoicePara = document.querySelector('.computer-choice');
 
 const winnerDiv = document.querySelector('.winner-result');
 const loserDiv = document.querySelector('.lose-result');
@@ -24,8 +26,7 @@ const roundWinner = document.querySelector('.round-winner');
 const loserSound = document.querySelector('#loser-sound');
 const winnerSound = document.querySelector('#winner-sound');
 
-const playerChoicePara = document.querySelector('.player-choice');
-const compChoicePara = document.querySelector('.computer-choice');
+
 
 // event listeners 
 startBtn.addEventListener('click',startGame);
